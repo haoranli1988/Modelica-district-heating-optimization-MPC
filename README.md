@@ -9,7 +9,7 @@ The package includes the following parts:
 3) Python code for JModelica optimization, Opt.txt;
 4) One-year measured data of the district heating system at the Norwegian University of Science and Technology (NTNU) Trondheim campus, Inputs.csv.
 
-The package is developed by Haoran Li and Juan Hou during their study at the NTNU. If you have any questions regarding the package, feel free to contact us at lihaoran198811@gmail.com and juan.hou2022@gmail.com.   
+The package is developed by Haoran Li and Juan Hou during their study at the NTNU. If you have any questions regarding the package, feel free to contact us at lihaoran198811@gmail.com and juan.hou2022@gmail.com. Questions regarding the measured data, please contact natasa.nord@ntnu.no.   
 
 ## How to cite the package
 The package and data can be cited through the following paper.
