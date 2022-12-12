@@ -5,6 +5,6 @@ The package includes the following parts:
 1) Modelica model components for district heating systems, Plants.mo;
 2) Optimica framework for defining optimization problems, OpFile.mop;
 3) Python code for JModelica optimization, Opt.txt;
-4) one-year amusement of the district heating system at the Norwegian University of Science and Technology Trondheim campus, Inputs.csv.
+4) one-year amusement of the district heating system at the Norwegian University of Science and Technology (NTNU) Trondheim campus, Inputs.csv.
 
-The package is developed by Haoran Li and Juan Hou.  
+The package is developed by Haoran Li and Juan Hou during their study at the NTNU. If you have any questions regarding the package, feel free to contact us at lihaoran198811@gmail.com.   
