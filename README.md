@@ -17,5 +17,7 @@ Li H, Hou J, Hong T, Nord N. Distinguish between the economic optimal and lowest
 
 Li H. Economic optimization for heatprosumer-based district heating systems in unidirectional heating markets.
 
+Hou J. Investigation of Model Predictive Control Application in District Heating Systems with Distributed Sources.
+
 ## Acknowledgements
 The package is the output of the Norwegian research project Understanding Behaviour of District Heating Systems Integrating Distributed Sources (project number 262707) and EU research project Climate Positive  Circular  Communities (grant  agreement ID: 101036723). 
