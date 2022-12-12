@@ -14,6 +14,7 @@ Li H, Hou J, Tian Z, Hong T, Nord N, Rohde D. Optimize heat prosumers' economic 
 
 ## Publications using the package
 Li H, Hou J, Hong T, Nord N. Distinguish between the economic optimal and lowest distribution temperatures for heat-prosumer-based district heating systems with short-term thermal energy storage. Energy. 2022 Jun 1;248:123601.
+
 Li H. Economic optimization for heatprosumer-based district heating systems in unidirectional heating markets.
 
 ## Acknowledgements
