@@ -1,4 +1,4 @@
-# Modelica district heating and building optimization MPC
+# Modelica district heating optimization MPC
 This is a Modelica package for district heating and building heating systems modelling, optimization and control. The main contribution of this package are:
 1) A fast and effective approach to model and optimize district heating and building heating systems;
 2) Year-level measured data for a campus district heating system and a university building in Norway is opened for testing and research.
