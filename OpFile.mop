@@ -1,0 +1,59 @@
+package Package
+
+optimization Opt (
+objectiveIntegrand =W_heat*qMS/Nom_heat+W_tair*(Tia-Tiaref)^2/Nom_tair, 
+objective =Days*24*3600*W_peak*qpeak/Nom_peak,
+startTime = 0, 
+finalTime = Days*24*3600
+)
+  parameter Real Days=30;
+  parameter Real qpeak(free=true, initialGuess=Nom_peak, nominal=Nom_peak);
+  parameter Real W_peak=1;
+  parameter Real W_heat=4;
+  parameter Real W_tair=2;
+  parameter Real Nom_peak=10E6;
+  parameter Real Nom_heat=4E6;
+  parameter Real Nom_tair=1;
+
+  extends Simu; 
+  Modelica.SIunits.HeatFlowRate qMS;
+constraint
+  qMS<=qpeak;
+  0<=qMS1;
+  0<=qMS2;
+  0<=qdc;
+  qdc<=1E6;
+  DC.Twodc<=80;
+  T_MS_s1<=100;
+  20<=T_MS_s1;
+  T_MS_s2<=100;
+  20<=T_MS_s2;
+  T_MS_r1<=100;
+  20<=T_MS_r1;
+  T_MS_r2<=100;
+  20<=T_MS_r2;
+  T_WT_s<=100;
+  20<=T_WT_s;
+  T_WT_r<=100;
+  20<=T_WT_r;
+  T_Bu_s<=100;
+  60<=T_Bu_s;
+  -1.6191*Toa+56.786<=T_Bu_s;
+  Dif<=0.7017*T_Bu_s-27.1661;
+  0<=Dif;
+  m_MS1<=40;
+  0<=m_MS1;
+  m_MS2<=120;
+  0<=m_MS2;
+  m_Bu<=120;
+  20<=m_Bu;
+  m_Bu-m_MS2<=40;
+  0<=m_Bu-m_MS2;
+end Opt;
+
+model Simu
+  extends Plants.Models.Simu; 
+end Simu;
+
+
+end Package;
