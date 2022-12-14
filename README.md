@@ -16,8 +16,11 @@ For the package for optimizing district heating systems, please cite Li H, Hou J
 
 ## Publications using the package
 Hou J, Li H, Nord N. Nonlinear model predictive control for the space heating system of a university building in Norway. Energy. 2022 Aug 15;253:124157.
+
 Li H, Hou J, Hong T, Nord N. Distinguish between the economic optimal and lowest distribution temperatures for heat-prosumer-based district heating systems with short-term thermal energy storage. Energy. 2022 Jun 1;248:123601.
+
 Li H. Economic optimization for heat prosumer-based district heating systems in unidirectional heating markets.
+
 Hou J. Investigation of Model Predictive Control Application in District Heating Systems with Distributed Sources.
 
 ## Acknowledgements
