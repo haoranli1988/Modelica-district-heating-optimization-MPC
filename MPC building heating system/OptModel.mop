@@ -1,0 +1,130 @@
+package Building
+
+optimization BuildingMPC(objectiveIntegrand=C_EDC+0.25*Tdif^2,
+objective=20*Qp*P_LDC/30/2,
+startTime=0.0,
+finalTime=12*3600)
+ extends Plant;
+ parameter Real Qp (free=true,min=0,initialGuess=200000);
+ parameter Real P_LDC=0.47 "Load demand price (NOK/kW/month)";
+ Modelica.Blocks.Interfaces.RealInput Tiaref;
+ Modelica.Blocks.Interfaces.RealInput P_EDC "Energy demand price (NOK/kWh)";
+ Real C_EDC;
+ Real Tdif;
+equation
+ C_EDC=Qsh*P_EDC/3.6/10^6;
+ Tdif=Tia-Tiaref;
+constraint
+ Qsh<=Qp;
+ Ts<=80;
+ 30<=Ts;
+ Trr<=80;
+ 0<=Trr;
+ mr<=5;
+ 0<=mr;
+ Tia<=25;
+ 15<=Tia;
+ 0<=qra[1];
+ 0<=qra[2];
+ 0<=qra[3];
+ 0<=qra[4];
+ 0<=qra[5];
+end BuildingMPC;
+
+partial model Plant
+  // Initial states
+  parameter Real Ten_init=10;
+  parameter Real Tia_init=20;
+  parameter Real Tma_init=20;
+  parameter Real Tra1_init=20;
+  parameter Real Tra2_init=20;
+  parameter Real Tra3_init=20;
+  parameter Real Tra4_init=20;
+  parameter Real Tra5_init=20;
+  // Parameters
+  parameter Real Cen=1718325000 "Thermal capacity of building envelop (J/K)";
+  parameter Real Cia=87436800 "Thermal capacity of indoor air (J/K)";
+  parameter Real Cma=682023200 "Thermal capacity of inetrior thermal medium, i.e. interior walls and furniture (J/K)";
+  parameter Real Roe=1.35 "The thermal resistance between building envelope and outdoor air (m2K/W)";
+  parameter Real Rie=1.50 "The thermal resistance between buidling envelope and indoor air (m2K/W)";
+  parameter Real Rmi=1.63 "The thermal resistance between indoor air and interior walls and furniture (m2K/W)";
+  parameter Real Rwin=0.49 "The thermal resistance between indoor and outdoor air through windows (m2K/W)";
+  parameter Real Hinf=4615 "The heat teansfer coefficient for infiltration (W/K)";
+  parameter Real Aen=9819 "The area of building envelope (m2)";
+  parameter Real Ama=27500 "The area of interior thermal medium (m2)";
+  parameter Real Awin=2293 "The area of building windowns (m2)";
+  parameter Real Cw=4184 "Heat capacity of water (J/kgK)";
+  parameter Real Ca=1012 "Heat capacity of air (J/kgK)";
+  parameter Real Scra=362 "Number of radiators";
+  parameter Real a=7.6187*Scra "characteristic coefficients of the radiator";
+  parameter Real b=1.2831 "characteristic coefficients of the radiator";
+  parameter Real Cr=1600*Scra "Heat capacity of water in radiator (J/kgK)";
+  parameter Integer N=5 "Number of sections for radiator";
+  // Manipulated variable
+  Modelica.Blocks.Interfaces.RealInput Ts;
+  Modelica.Blocks.Interfaces.RealInput mr;
+  // Input variables
+  Modelica.Blocks.Interfaces.RealInput Toa;
+  Modelica.Blocks.Interfaces.RealInput Qin;
+  Modelica.Blocks.Interfaces.RealInput Hv;
+  // Variables
+  Real Trs "Water supply temperature of radiator (Centigrade)";
+  Real Trr "Water return tmeperature of radiator (Centigrade)";
+  Real ma "Air flow rate of ventilation (kg/s)";
+  Real Qload "Heating load of building(W)";
+  Real Qsh "Heat flow rate of space heating (W)";
+  Real Qra "Heat flow rate of Radiator to Indoor air (W)";
+  Real Qve "Heat flow rate of ventilation system to indoor air (W)";
+  Real Qinf "Heat flow rate of infiltration (W)";
+  Real Qen "Heat flow rate of envelop (W)";
+  Real Qmaen "Heat flow rate of envelop thermal mass (W)";
+  Real Qma "Heat flow rate of interior thermal mass (W)";
+  // State variables
+  Real Ten( nominal=Ten_init) "Temperature of buidling envelop (Centigrade)";
+  Real Tia( nominal=Tia_init) "Temperature of indoor air (Centigrade)";
+  Real Tma( nominal=Tma_init) "Temperature of interior thermal medium (Centigrade)";
+  Real Tra[N]( nominal=fill(Tra1_init,N)) "Temperature of water flow in radiator (Centigrade)";
+  // protected
+   Real qra[N] "Heat flow rate of Radiator (each section) to Indoor air (W)";
+   Real Cvea "Heat capacity rate of air flow in AHU";
+initial equation 
+  Ten=Ten_init;
+  Tia=Tia_init;
+  Tma=Tma_init;
+  Tra[1]=Tra1_init;
+  Tra[2]=Tra2_init;
+  Tra[3]=Tra3_init;
+  Tra[4]=Tra4_init;
+  Tra[5]=Tra5_init;
+equation 
+  // Building
+  Qen=Aen*(Ten-Toa)/Roe+Awin*(Tia-Toa)/Rwin;
+  Qmaen=Aen*(Tia-Ten)/Rie;
+  Qma=Ama*(Tia-Tma)/Rmi;
+  Qinf=(Tia-Toa)*Hinf;
+  Cen*der(Ten)=Aen*(Toa-Ten)/Roe+Aen*(Tia-Ten)/Rie;
+  Cia*der(Tia)=Aen*(Ten-Tia)/Rie+Ama*(Tma-Tia)/Rmi+Awin*(Toa-Tia)/Rwin+(Toa-Tia)*Hinf+(Toa-Tia)*Hv+Qra+Qve+Qin;
+  Cma*der(Tma)=Ama*(Tia-Tma)/Rmi;
+  // Radiator
+  Ts=Trs;
+  Qra=sum(qra);
+  qra[1]=a/N*(Tra[1]-Tia)^b;
+  Cr/N*der(Tra[1])=Cw*mr*(Trs-Tra[1])-qra[1];
+  for i in 2:(N-1) loop
+      qra[i]=a/N*(Tra[i]-Tia)^b;
+      Cr/N*der(Tra[i])=Cw*mr*(Tra[i-1]-Tra[i])-qra[i];
+  end for;
+  qra[end]=a/N*(Tra[end]-Tia)^b;
+  Cr/N*der(Tra[end])=Cw*mr*(Tra[end-1]-Tra[end])-qra[end];
+  Trr=Tra[end];
+  // AHU
+  ma=Hv/Ca;
+  Cvea=Ca*ma;
+  Qve=Cvea*(Tia-Toa);
+  // Heating system
+  Qsh=Qra+Qve;
+  Qload=Qmaen+Qinf-Qin;
+end Plant;
+
+
+end Building;
