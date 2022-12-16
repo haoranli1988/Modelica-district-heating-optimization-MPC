@@ -6,13 +6,16 @@ This is a Modelica package for district heating and building heating systems mod
 The package includes the following parts:
 1) Package for MPC of building heating systems, MPC building heating system. This fold includes the Modelica model, JModelica code and measured data for a university building in Norway.  
 2) Package for optimizing district heating systems, Optimization DH system. This fold includes the Modelica model, JModelica code and measured data for a university campus district heating system in Norway.
+3) Package for MPC district heating systems, MPC DH system. This fold includes the Modelica model, JModelica code and measured data for a university campus district heating system in Norway.
 
-The package is developed by Haoran Li and Juan Hou during their study at NTNU. If you have any questions regarding the package, feel free to contact us at lihaoran198811@gmail.com and juan.hou2022@gmail.com. For questions regarding the case study and measured data, please contact natasa.nord@ntnu.no.   
+The package is developed by Haoran Li and Juan Hou during their study at the Norwegian University of Science and Technology (NTNU). If you have any questions regarding the package, feel free to contact us at lihaoran198811@gmail.com and juan.hou2022@gmail.com. For questions regarding the case study and measured data, please contact natasa.nord@ntnu.no.   
 
 ## How to cite the package
 For the package for MPC of building heating systems, please cite Hou J, Li H, Nord N, Huang G. Model predictive control under weather forecast uncertainty for HVAC systems in university buildings. Energy and Buildings. 2022 Feb 15;257:111793.
 
 For the package for optimizing district heating systems, please cite Li H, Hou J, Tian Z, Hong T, Nord N, Rohde D. Optimize heat prosumers' economic performance under current heating price models by using water tank thermal energy storage. Energy. 2022 Jan 15;239:122103.  
+
+For the package for MPC of DH system, please cite XX.  
 
 ## Publications using the package
 Hou J, Li H, Nord N. Nonlinear model predictive control for the space heating system of a university building in Norway. Energy. 2022 Aug 15;253:124157.
