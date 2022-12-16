@@ -1,0 +1,138 @@
+package Package
+
+
+optimization Opt(
+objectiveIntegrand=W_edc*P_edc*qMS/3.6/10^6+W_ele*P_ele*(P_DC+P_pump)/3.6/10^6+W_Teva*Tdif^2,
+objective=W_peakh*P_ldc*qpeakh/10^3/30/2,
+startTime=0,
+finalTime=11*3600
+)
+  extends Simu; 
+  parameter Real Tevapout_ref=6.5;
+  parameter Real qpeakh(free=true, initialGuess=4E6, nominal=4E6);
+  parameter Real qpeake(free=true, initialGuess=3.5E5, nominal=3E5); 
+  parameter Real P_ldc=39 "Load demand price (NOK/kW/month)";
+  parameter Real W_edc=1E0;
+  parameter Real W_ele=1E0;
+  parameter Real W_Teva=0E2;
+  parameter Real W_peakh=1E4;
+  Modelica.Blocks.Interfaces.RealInput P_edc "Energy demand price (NOK/kWh)";
+  Modelica.Blocks.Interfaces.RealInput P_ele "Electricity price (NOK/kWh)";
+  Real Tdif;
+equation
+  Tdif=DC.Tevapout-Tevapout_ref; 
+constraint
+  DC.Tevapout<=7.0;
+  6.0<=DC.Tevapout;
+  qMS<=qpeakh;
+  0<=qMS1;
+  0<=qMS2;
+  T_MS_s1<=100;
+  20<=T_MS_s1;
+  T_MS_s2<=100;
+  20<=T_MS_s2;
+  T_MS_r1<=100;
+  20<=T_MS_r1;
+  T_MS_r2<=100;
+  20<=T_MS_r2;
+  T_WT_s<=100;
+  20<=T_WT_s;
+  T_WT_r<=100;
+  20<=T_WT_r;
+  T_Bu_s<=100;
+  60<=T_Bu_s;
+  -1.6191*Toa+56.786<=T_Bu_s;
+  Dif<=0.7017*T_Bu_s-27.1661;
+  0<=Dif;
+  m_MS1<=10;
+  0<=m_MS1;
+  m_MS2<=80;
+  0<=m_MS2;
+  m_WT<=10;
+  0<=m_WT;
+  20<=m_Bu;
+  200000<=P_DC;
+  P_DC<=550000;
+end Opt;
+
+
+optimization Opt1(
+objectiveIntegrand=W_edc*P_edc*qMS/3.6/10^6+W_ele*P_ele*P_DC/3.6/10^6+W_Teva*Tdif^2,
+objective=W_peakh*P_ldc*qpeakh/10^3/30/2,
+startTime=0,
+finalTime=11*3600
+)
+  extends Simu; 
+  parameter Real Tevapout_ref=6.5;
+  parameter Real qpeakh(free=true, initialGuess=4E6, nominal=4E6);
+  parameter Real qpeake(free=true, initialGuess=3.5E5, nominal=3E5); 
+  parameter Real P_ldc=39 "Load demand price (NOK/kW/month)";
+  parameter Real W_edc=1E0;
+  parameter Real W_ele=1E0;
+  parameter Real W_Teva=5E2;
+  parameter Real W_peakh=1E4;
+  Modelica.Blocks.Interfaces.RealInput P_edc "Energy demand price (NOK/kWh)";
+  Modelica.Blocks.Interfaces.RealInput P_ele "Electricity price (NOK/kWh)";
+  Real Tdif;
+equation
+  Tdif=DC.Tevapout-Tevapout_ref; 
+constraint
+  qMS<=qpeakh;
+  0<=qMS1;
+  0<=qMS2;
+  T_MS_s1<=100;
+  20<=T_MS_s1;
+  T_MS_s2<=100;
+  20<=T_MS_s2;
+  T_MS_r1<=100;
+  20<=T_MS_r1;
+  T_MS_r2<=100;
+  20<=T_MS_r2;
+  T_WT_s<=100;
+  20<=T_WT_s;
+  T_WT_r<=100;
+  20<=T_WT_r;
+  T_Bu_s<=100;
+  60<=T_Bu_s;
+  -1.6191*Toa+56.786<=T_Bu_s;
+  Dif<=0.7017*T_Bu_s-27.1661;
+  0<=Dif;
+  m_MS1<=30;
+  0<=m_MS1;
+  m_MS2<=80;
+  0<=m_MS2;
+  m_WT<=30;
+  0<=m_WT;
+  20<=Bu.mw;
+  150000<=P_DC;
+  P_DC<=550000;
+end Opt1;
+
+
+
+
+
+model RBC
+  extends Simu;
+  parameter Real Tevapout_ref=6.5;
+  Real Tdif "Temperature difference between outlet temperature of evaperator and its reference value";
+  Real x "integrtion";
+  Real T_Bu_r_ref "Temperature signal of return temperature";
+  Real Tdif_Bu_r "Temperature difference between return temperature of building and its reference value";
+  Real y "integrtion";
+equation
+  Tdif=T_evapout-Tevapout_ref;
+  der(x)=Tdif;
+  T_Bu_r_ref=T_Bu_s-(0.7017*T_Bu_s-27.1661);
+  Tdif_Bu_r=T_Bu_r_ref-T_Bu_r;
+  der(y)=Tdif_Bu_r;
+end RBC;
+  
+  
+
+
+model Simu
+  extends Heatsupply.Model.Simu;
+end Simu;
+
+end Package;
