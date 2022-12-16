@@ -1,0 +1,17 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Optimize heat prosumers economic performance under
+  current heating price models by using water tank
+  thermal energy storage.
+message: >-
+  For the package for optimizing district heating
+  systems, please cite it as below.
+type: software
+authors:
+  - given-names: Haoran
+    family-names: Li
+  - given-names: Juan
+    family-names: Hou
