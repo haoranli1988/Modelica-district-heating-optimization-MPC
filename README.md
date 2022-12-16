@@ -15,16 +15,16 @@ For the package for MPC of building heating systems, please cite [Hou J, Li H, N
 
 For the package for optimizing district heating systems, please cite [Li H, Hou J, Tian Z, Hong T, Nord N, Rohde D. Optimize heat prosumers' economic performance under current heating price models by using water tank thermal energy storage. Energy. 2022 Jan 15;239:122103](https://www.sciencedirect.com/science/article/pii/S0360544221023513).  
 
-For the package for MPC of DH system, please cite XX.  
+For the package for MPC of DH system, please cite [Hou J. Investigation of Model Predictive Control Application in District Heating Systems with Distributed Sources](https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3016473).  
 
 ## Publications using the package
-Hou J, Li H, Nord N. Nonlinear model predictive control for the space heating system of a university building in Norway. Energy. 2022 Aug 15;253:124157.
+[Hou J, Li H, Nord N. Nonlinear model predictive control for the space heating system of a university building in Norway. Energy. 2022 Aug 15;253:124157](https://www.sciencedirect.com/science/article/pii/S036054422201060X).
 
-Li H, Hou J, Hong T, Nord N. Distinguish between the economic optimal and lowest distribution temperatures for heat-prosumer-based district heating systems with short-term thermal energy storage. Energy. 2022 Jun 1;248:123601.
+[Li H, Hou J, Hong T, Nord N. Distinguish between the economic optimal and lowest distribution temperatures for heat-prosumer-based district heating systems with short-term thermal energy storage. Energy. 2022 Jun 1;248:123601](https://www.sciencedirect.com/science/article/pii/S0360544222005047).
 
-Li H. Economic optimization for heat prosumer-based district heating systems in unidirectional heating markets.
+[Li H. Economic optimization for heat prosumer-based district heating systems in unidirectional heating markets](https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/2837506).
 
-Hou J. Investigation of Model Predictive Control Application in District Heating Systems with Distributed Sources.
+[Hou J. Investigation of Model Predictive Control Application in District Heating Systems with Distributed Sources](https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/3016473).
 
 ## Acknowledgements
 The package is the output of the Norwegian research council project under FRIPRO/FRINATEK program Understanding Behaviour of District Heating Systems Integrating Distributed Sources (project number 262707). In addition, the maintenance of the package receives funding from the EU research project Climate Positive Circular Communities (ARV) (grant agreement ID: 101036723).
