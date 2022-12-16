@@ -4,9 +4,9 @@ This is a Modelica package for district heating and building heating systems mod
 2) Year-level measured data for a campus district heating system and a university building in Norway is opened for testing and research.
 
 The package includes the following parts:
-1) Package for MPC of building heating systems, MPC building heating system. This fold includes the Modelica model, JModelica code and measured data for a university building in Norway.  
-2) Package for optimizing district heating systems, Optimization DH system. This fold includes the Modelica model, JModelica code and measured data for a university campus district heating system in Norway.
-3) Package for MPC district heating systems, MPC DH system. This fold includes the Modelica model, JModelica code and measured data for a university campus district heating system in Norway.
+1) Package for MPC of building heating systems, [MPC building heating system](https://github.com/haoranli1988/Modelica-district-heating-optimization-MPC/tree/main/MPC%20building%20heating%20system). This fold includes the Modelica model, JModelica code and measured data for a university building in Norway.  
+2) Package for optimizing district heating systems, [Optimization DH system](https://github.com/haoranli1988/Modelica-district-heating-optimization-MPC/tree/main/Optimization%20DH%20system). This fold includes the Modelica model, JModelica code and measured data for a university campus district heating system in Norway.
+3) Package for MPC district heating systems, [MPC DH system](https://github.com/haoranli1988/Modelica-district-heating-optimization-MPC/tree/main/MPC%20DH%20system). This fold includes the Modelica model, JModelica code and measured data for a university campus district heating system in Norway.
 
 The package is developed by [Haoran Li](https://www.linkedin.com/in/haoran-li-4397311ba/) and [Juan Hou](https://www.linkedin.com/in/juan-hou-4a54a622a/) during their study at the Norwegian University of Science and Technology (NTNU). If you have any questions regarding the package, feel free to contact us at lihaoran198811@gmail.com and juan.hou2022@gmail.com. For questions regarding the case study and measured data, please contact natasa.nord@ntnu.no.   
 
